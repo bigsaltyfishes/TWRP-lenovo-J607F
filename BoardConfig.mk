@@ -47,7 +47,7 @@ BOARD_KERNEL_CMDLINE := androidboot.console=ttyMSM0 \
                         loop.max_part=7 
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
-BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
+BOARD_PREBUILT_RECOVERY_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
 BOARD_INCLUDE_RECOVERY_DTBO := true
 BOARD_BOOTIMG_HEADER_VERSION := 2
 BOARD_KERNEL_BASE := 0x00000000
@@ -162,6 +162,8 @@ TW_INCLUDE_NTFS_3G := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_NO_BIND_SYSTEM := true
 TW_NO_EXFAT_FUSE := true
+TW_OVERRIDE_SYSTEM_PROPS := \
+    "ro.build.date.utc;ro.bootimage.build.date.utc=ro.build.date.utc;ro.odm.build.date.utc=ro.build.date.utc;ro.product.build.date.utc=ro.build.date.utc;ro.system.build.date.utc=ro.build.date.utc;ro.system_ext.build.date.utc=ro.build.date.utc;ro.vendor.build.date.utc=ro.build.date.utc;ro.build.product;ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
 TW_RECOVERY_ADDITIONAL_RELINK_BINARY_FILES += \
     $(TARGET_OUT_EXECUTABLES)/ashmemd \
     $(TARGET_OUT_EXECUTABLES)/strace
@@ -173,8 +175,7 @@ TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES += \
     $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libpcrecpp.so \
     $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
-TW_OVERRIDE_SYSTEM_PROPS := \
-    "ro.build.date.utc;ro.bootimage.build.date.utc=ro.build.date.utc;ro.odm.build.date.utc=ro.build.date.utc;ro.product.build.date.utc=ro.build.date.utc;ro.system.build.date.utc=ro.build.date.utc;ro.system_ext.build.date.utc=ro.build.date.utc;ro.vendor.build.date.utc=ro.build.date.utc;ro.build.product;ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
+
 
 
 # TWRP Debug Flags
